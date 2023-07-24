@@ -1,0 +1,32 @@
+version: "3.9"
+
+volumes:
+  db-data:
+
+services:
+  database:
+    container_name: bus-order-compose
+    image: postgres:14.1
+    environment:
+      POSTGRES_DB: "bus-order-db"
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "password"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ias_be_compose
+    image: siarhkul/i_am_sober_be
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5433/postgres
+    depends_on:
+      - database
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+#  https://sysout.ru/spring-boot-postgresql-js-v-dosker/
