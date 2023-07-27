@@ -31,15 +31,3 @@ CREATE TABLE IF NOT EXISTS Booking (
     data TIMESTAMP,
     client_id int REFERENCES client(id)
 )
-
-/*--changeset skulazhanka:5
-CREATE TABLE products (
-                          product_no integer PRIMARY KEY,
-                          name text,
-                          price numeric
-);
-CREATE TABLE orders (
-                        order_id integer PRIMARY KEY,
-                        product_id integer REFERENCES products (product_no),
-                        quantity integer
-);*/
