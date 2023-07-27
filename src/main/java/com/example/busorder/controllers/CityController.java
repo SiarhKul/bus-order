@@ -1,21 +1,22 @@
 package com.example.busorder.controllers;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
-import java.util.List;
-
+@Tag(name = "City")
 @RestController()
 @RequestMapping("/api")
 public class CityController {
 
+    @ApiResponse(responseCode = "200", description = "Cities are returned")
+    @Operation(summary = "city", description = "Get available cities")
     @GetMapping("/city")
     public String getAllCities() {
         return "Minsk";
     }
-
 }
