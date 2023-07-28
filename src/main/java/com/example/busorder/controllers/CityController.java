@@ -1,5 +1,6 @@
 package com.example.busorder.controllers;
 
+import com.example.busorder.models.entities.City;
 import com.example.busorder.service.CityService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -9,6 +10,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @Tag(name = "City")
 @RestController()
@@ -21,8 +24,8 @@ public class CityController {
     @ApiResponse(responseCode = "200", description = "Cities are returned")
     @Operation(summary = "city", description = "Get available cities")
     @GetMapping("/city")
-    public String getAllCities() {
-        return cityService.getCity();
+    public List<City> getAllCities() {
+        return cityService.getAllCity();
 
     }
 }
