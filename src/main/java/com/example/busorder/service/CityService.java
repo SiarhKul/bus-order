@@ -17,4 +17,8 @@ public class CityService {
         return cityRepository.findAll();
     }
 
+    public String getCityById( String cityId){
+        return  cityRepository.getCityByName(cityId);
+    }
+
 }
