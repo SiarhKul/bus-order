@@ -6,4 +6,12 @@ import java.util.List;
 
 public interface RouteService {
     List<Route> getAllRoutes();
+
+    Route createRoute();
+
 }
+
+
+
+
+

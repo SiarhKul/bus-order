@@ -17,4 +17,11 @@ public class RouteServiceImpl implements RouteService {
     public List<Route> getAllRoutes() {
         return routeRepository.findAll();
     }
+
+    @Override
+    public Route createRoute() {
+        return Route.builder()
+                .id(10)
+                .route("Minsk-Braslov").build();
+    }
 }
