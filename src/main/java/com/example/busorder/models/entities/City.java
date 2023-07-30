@@ -1,13 +1,10 @@
 package com.example.busorder.models.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "city")
+@Table(name = "City")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -17,6 +14,8 @@ public class City {
 
     @Id
     @Column(name = "id")
+    @OneToOne()
+    @JoinColumn(name = "departure_city_id", referencedColumnName = "id")
     private int id;
 
     @Column(name = "name")
