@@ -4,6 +4,4 @@ databaseChangeLog:
   - include:
       file: db/changelog/db.changelog-1.1.sql
   - include:
-      file: db/changelog/db.changelog-create_routes.sql
-  - include:
       file: db/changelog/db.changelog-add-cityId-to-route.sql

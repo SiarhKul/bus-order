@@ -1,5 +1,6 @@
 package com.example.busorder.service;
 
+import com.example.busorder.models.dto.RouteRequestDTO;
 import com.example.busorder.models.entities.Route;
 import com.example.busorder.repository.RouteRepository;
 import lombok.AllArgsConstructor;
@@ -19,9 +20,11 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public Route createRoute() {
-        return Route.builder()
-                .id(10)
-                .route("Minsk-Braslov").build();
+    public Route createRoute(RouteRequestDTO routeRequestDTO) {
+
+        return Route.builder().id(1)
+                .departure_city("Minsk")
+                .destination_city("Vitebsk")
+                .build();
     }
 }

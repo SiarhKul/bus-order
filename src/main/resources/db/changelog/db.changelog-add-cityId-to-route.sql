@@ -3,6 +3,6 @@ ALTER TABLE Route DROP COLUMN route;
 
 --changeset skulazhanka:2
 alter table Route
-    ADD COLUMN departure_city_id INT REFERENCES city(id) UNIQUE ,
-    ADD COLUMN destination_city_id INT REFERENCES city(id) UNIQUE ;
+    ADD COLUMN departure_city VARCHAR,
+    ADD COLUMN destination_city VARCHAR;
 

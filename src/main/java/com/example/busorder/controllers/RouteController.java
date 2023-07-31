@@ -1,16 +1,14 @@
 package com.example.busorder.controllers;
 
 
+import com.example.busorder.models.dto.RouteRequestDTO;
 import com.example.busorder.models.entities.Route;
 import com.example.busorder.service.RouteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,9 +30,8 @@ public class RouteController {
     @ApiResponse(responseCode = "200", description = "Route was created")
     @Operation(summary = "Create route based on list of city", description = "Return a created Route")
     @PostMapping
-    Route createRoute() {
-        return routeService.createRoute();
-
+    Route createRoute(@RequestBody RouteRequestDTO routeRequestDTO) {
+        return routeService.createRoute(routeRequestDTO);
     }
 
 

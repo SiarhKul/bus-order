@@ -16,15 +16,20 @@ public class Route {
     @Column(name = "id")
     private int id;
 
-//    @Column(name = "route")
-//    private String route;
+    @Column(name = "departure_city")
+    private String departure_city;
 
-    @OneToOne(mappedBy = "id")
-    @Column(name = "departure_city_id")
-    private int departure_city_id;
-
-    @OneToOne(mappedBy = "id")
-    @Column(name = "destination_city_id")
-    private int destination_city_id;
+    @Column(name = "destination_city")
+    private String destination_city;
 
 }
+/*
+*  @ManyToOne(optional = false)
+    @JoinColumn(name = "departure_city_id")
+    private City departure_city_id;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "destination_city_id")
+    private City destination_city_id;
+*
+* */

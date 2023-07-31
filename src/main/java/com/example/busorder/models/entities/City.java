@@ -14,10 +14,11 @@ public class City {
 
     @Id
     @Column(name = "id")
-    @OneToOne()
-    @JoinColumn(name = "departure_city_id", referencedColumnName = "id")
     private int id;
 
     @Column(name = "name")
     private String name;
 }
+
+//@OneToOne()
+//@JoinColumn(name = "departure_city_id", referencedColumnName = "id")
