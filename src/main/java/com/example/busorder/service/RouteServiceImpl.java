@@ -22,16 +22,11 @@ public class RouteServiceImpl implements RouteService {
     @Override
     public Route createRoute(RouteRequestDTO routeRequestDTO) {
 
-        Route buildedRoute = Route.builder()
+        Route builtRoute = Route.builder()
                 .destination_city(routeRequestDTO.getDestinationCity())
                 .departure_city(routeRequestDTO.getDepartureCity())
                 .build();
 
-        routeRepository.save(buildedRoute);
-
-//        return Route.builder().id(1)
-//                .departure_city("Minsk")
-//                .destination_city("Vitebsk")
-//                .build();
+        return routeRepository.save(builtRoute);
     }
 }
