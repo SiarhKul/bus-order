@@ -19,13 +19,13 @@ import java.util.List;
 @AllArgsConstructor
 public class CityController {
 
-    private final CityService cityService;
+    private final CityService cityServiece;
 
     @ApiResponse(responseCode = "200", description = "Cities are returned")
     @Operation(summary = "city", description = "Get available cities")
     @GetMapping("/city")
     public List<City> getAllCities() {
-        return cityService.getAllCity();
+        return cityServiece.getAllCity();
     }
 
 
@@ -33,7 +33,7 @@ public class CityController {
     @Operation(summary = "name-city", description = "description name-city")
     @GetMapping("/city-name/{cityId}")
     public String getCityById(@PathVariable("cityId") String cityId) {
-        return cityService.getCityById(cityId);
+        return cityServiece.getCityById(cityId);
     }
 
 }
