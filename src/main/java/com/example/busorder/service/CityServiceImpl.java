@@ -22,13 +22,4 @@ public class CityServiceImpl implements CityService {
     public String getCityById(String cityId) {
         return cityRepository.getCityByName(cityId);
     }
-
-/*    public List<City> getAllCity() {
-        return cityRepository.findAll();
-    }
-
-    public String getCityById(String cityId) {
-        return cityRepository.getCityByName(cityId);
-    }*/
-
 }

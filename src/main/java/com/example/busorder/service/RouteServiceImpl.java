@@ -1,5 +1,6 @@
 package com.example.busorder.service;
 
+import com.example.busorder.mapper.RouteMapper;
 import com.example.busorder.models.dto.RouteRequestDTO;
 import com.example.busorder.models.entities.Route;
 import com.example.busorder.repository.RouteRepository;
@@ -13,6 +14,7 @@ import java.util.List;
 public class RouteServiceImpl implements RouteService {
 
     private final RouteRepository routeRepository;
+    private final RouteMapper routeMapper;
 
     @Override
     public List<Route> getAllRoutes() {
@@ -22,11 +24,7 @@ public class RouteServiceImpl implements RouteService {
     @Override
     public Route createRoute(RouteRequestDTO routeRequestDTO) {
 
-        Route builtRoute = Route.builder()
-                .destination_city(routeRequestDTO.getDestinationCity())
-                .departure_city(routeRequestDTO.getDepartureCity())
-                .build();
-
-        return routeRepository.save(builtRoute);
+        Route route = routeMapper.routeRequestDTOtoRoute(routeRequestDTO);
+        return routeRepository.save(route);
     }
 }
