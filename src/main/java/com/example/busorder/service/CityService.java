@@ -7,5 +7,5 @@ import java.util.List;
 public interface CityService {
     List<City> getAllCity();
 
-    String getCityById(String cityId);
+    City getCityById(Integer cityId);
 }

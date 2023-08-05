@@ -32,7 +32,7 @@ public class CityController {
     @ApiResponse(responseCode = "200", description = "City name is returned")
     @Operation(summary = "name-city", description = "description name-city")
     @GetMapping("/city-name/{cityId}")
-    public String getCityById(@PathVariable("cityId") String cityId) {
+    public City getCityById(@PathVariable("cityId") Integer cityId) {
         return cityServiece.getCityById(cityId);
     }
 

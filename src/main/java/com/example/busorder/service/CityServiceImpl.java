@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -19,7 +20,11 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public String getCityById(String cityId) {
-        return cityRepository.getCityByName(cityId);
+    public City getCityById(Integer cityId) {
+
+        Optional<City> city = cityRepository.findById(cityId);
+        
+        return city.orElse(null);
+
     }
 }
