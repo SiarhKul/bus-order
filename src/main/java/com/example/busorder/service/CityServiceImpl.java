@@ -2,6 +2,7 @@ package com.example.busorder.service;
 
 import com.example.busorder.models.entities.City;
 import com.example.busorder.repository.CityRepository;
+import com.example.busorder.util.CityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +24,8 @@ public class CityServiceImpl implements CityService {
     public City getCityById(Integer cityId) {
 
         Optional<City> city = cityRepository.findById(cityId);
-        
-        return city.orElse(null);
+
+        return city.orElseThrow(CityNotFoundException::new);
 
     }
 }
