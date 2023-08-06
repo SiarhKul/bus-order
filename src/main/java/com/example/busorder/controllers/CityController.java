@@ -36,17 +36,4 @@ public class CityController {
     public City getCityById(@PathVariable("cityId") Integer cityId) {
         return cityServiece.getCityById(cityId);
     }
-
-
-    @ExceptionHandler
-    private ResponseEntity<ErrorResponse> handleCityNotFoundExceptions(CityNotFoundException exception) {
-
-        ErrorResponse test = ErrorResponse.builder()
-                .message("error text message")
-                .timestamp(System.currentTimeMillis())
-                .build();
-
-        return new ResponseEntity<>(test, HttpStatus.NOT_FOUND);
-
-    }
 }

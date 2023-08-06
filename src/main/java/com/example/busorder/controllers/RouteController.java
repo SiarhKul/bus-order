@@ -54,17 +54,4 @@ public class RouteController {
         return routeService.createRoute(routeRequestDTO);
     }
 
-
-    @ExceptionHandler
-    private ResponseEntity<ErrorResponse> handleCreateRouteException(CreteRouteException exception) {
-
-        ErrorResponse test = ErrorResponse.builder()
-                .message(exception.getMessage())
-                .timestamp(System.currentTimeMillis())
-                .build();
-
-        return new ResponseEntity<>(test, HttpStatus.NOT_FOUND);
-
-    }
-
 }
