@@ -38,6 +38,9 @@ public class RouteController {
     @Operation(summary = "Create route based on list of city", description = "Return a created Route")
     @PostMapping
     Route createRoute(@RequestBody @Valid RouteRequestDTO routeRequestDTO, BindingResult bindingResult) {
+
+
+
         if (bindingResult.hasErrors()) {
             StringBuilder errorMsg = new StringBuilder();
             List<FieldError> errors = bindingResult.getFieldErrors();
@@ -49,7 +52,6 @@ public class RouteController {
             }
             throw new CreteRouteException(errorMsg.toString());
         }
-
 
         return routeService.createRoute(routeRequestDTO);
     }
