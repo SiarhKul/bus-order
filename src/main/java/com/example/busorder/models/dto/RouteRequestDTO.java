@@ -8,6 +8,7 @@ import lombok.*;
 @Builder
 @Setter
 @Getter
+@ToString
 public class RouteRequestDTO {
 
     @NotEmpty(message = "departureCity is not be empty")

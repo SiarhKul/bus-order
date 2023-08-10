@@ -24,13 +24,3 @@ public class Route {
     private String destination_city;
 
 }
-/*
-*  @ManyToOne(optional = false)
-    @JoinColumn(name = "departure_city_id")
-    private City departure_city_id;
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "destination_city_id")
-    private City destination_city_id;
-*
-* */

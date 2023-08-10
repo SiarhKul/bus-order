@@ -6,6 +6,7 @@ import com.example.busorder.models.entities.Route;
 import com.example.busorder.service.RouteService;
 import com.example.busorder.util.ErrorResponse;
 import com.example.busorder.util.CreteRouteException;
+import com.example.busorder.validators.RouterValidator;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -26,6 +27,7 @@ import java.util.List;
 public class RouteController {
 
     private final RouteService routeService;
+    private final RouterValidator routerValidator;
 
     @ApiResponse(responseCode = "200", description = "Available user routes")
     @Operation(summary = "route", description = "Route destination")
@@ -37,9 +39,10 @@ public class RouteController {
     @ApiResponse(responseCode = "200", description = "Route was created")
     @Operation(summary = "Create route based on list of city", description = "Return a created Route")
     @PostMapping
-    Route createRoute(@RequestBody @Valid RouteRequestDTO routeRequestDTO, BindingResult bindingResult) {
+    Route createRoute(@RequestBody @Valid RouteRequestDTO routeRequestDTO,
+                      BindingResult bindingResult) {
 
-
+        routerValidator.validate(routeRequestDTO, bindingResult);
 
         if (bindingResult.hasErrors()) {
             StringBuilder errorMsg = new StringBuilder();
