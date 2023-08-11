@@ -29,7 +29,7 @@ public class RouterValidator implements Validator {
 
         List<ResultSet> doubleRoutes = routeRepository.checkDoubles();
         int size = doubleRoutes.size();
-
+//SELECT exists (SELECT 1 FROM route WHERE departure_city = 'Minstk' LIMIT 1);
         if (size > 0) {
             errors.rejectValue("destinationCity", "", "Such a route exists");
         }

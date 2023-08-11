@@ -24,7 +24,8 @@ public class CityServiceImpl implements CityService {
     public City getCityById(Integer cityId) {
 
         Optional<City> city = cityRepository.findById(cityId);
-
+        System.out.println("-----------------------");
+        System.out.println(city);
         return city.orElseThrow(CityNotFoundException::new);
 
     }

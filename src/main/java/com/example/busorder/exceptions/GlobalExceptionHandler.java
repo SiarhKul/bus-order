@@ -16,7 +16,7 @@ public class GlobalExceptionHandler {
     private ResponseEntity<ErrorResponse> handleCityNotFoundExceptions(CityNotFoundException exception) {
 
         ErrorResponse test = ErrorResponse.builder()
-                .message("error text message")
+                .message("There is no eny city")
                 .timestamp(System.currentTimeMillis())
                 .build();
 
