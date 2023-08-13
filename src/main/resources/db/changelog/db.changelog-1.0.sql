@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS Client
     name         VARCHAR not null,
     surname      VARCHAR not null,
     mobile_phone INT     not null,
-    e_mail       INT     not null unique
+    e_mail       VARCHAR     not null unique
 );
 
 --changeset skulazhanka:4
