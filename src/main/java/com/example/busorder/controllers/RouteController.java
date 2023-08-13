@@ -4,7 +4,6 @@ package com.example.busorder.controllers;
 import com.example.busorder.models.dto.RouteRequestDTO;
 import com.example.busorder.models.entities.Route;
 import com.example.busorder.service.RouteService;
-import com.example.busorder.util.ErrorResponse;
 import com.example.busorder.util.CreteRouteException;
 import com.example.busorder.validators.RouterValidator;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,8 +11,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +24,7 @@ import java.util.List;
 public class RouteController {
 
     private final RouteService routeService;
-    private final RouterValidator routerValidator;
+
 
     @ApiResponse(responseCode = "200", description = "Available user routes")
     @Operation(summary = "route", description = "Route destination")
@@ -41,8 +38,6 @@ public class RouteController {
     @PostMapping
     Route createRoute(@RequestBody @Valid RouteRequestDTO routeRequestDTO,
                       BindingResult bindingResult) {
-
-        routerValidator.validate(routeRequestDTO, bindingResult);
 
         if (bindingResult.hasErrors()) {
             StringBuilder errorMsg = new StringBuilder();

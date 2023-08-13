@@ -35,7 +35,6 @@ public class RouterValidator implements Validator {
         Boolean hasDoubleRoutes = routeRepository
                 .checkDoubles(departureCity, destinationCity);
 
-
         if (hasDoubleRoutes) {
             errors.rejectValue("destinationCity", "", "Such a route exists");
         }

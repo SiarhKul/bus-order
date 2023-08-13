@@ -3,6 +3,7 @@ package com.example.busorder.exceptions;
 import com.example.busorder.util.CityNotFoundException;
 import com.example.busorder.util.CreteRouteException;
 import com.example.busorder.util.ErrorResponse;
+import com.example.busorder.util.RecordExistsInTable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -23,6 +24,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(test, HttpStatus.NOT_FOUND);
 
     }
+
     @ExceptionHandler
     private ResponseEntity<ErrorResponse> handleCreateRouteException(CreteRouteException exception) {
 
@@ -32,6 +34,27 @@ public class GlobalExceptionHandler {
                 .build();
 
         return new ResponseEntity<>(test, HttpStatus.NOT_FOUND);
-
     }
+
+    @ExceptionHandler
+    private ResponseEntity<ErrorResponse> handleRecordExistsInTable(RecordExistsInTable ex) {
+        ErrorResponse build = ErrorResponse.builder()
+                .message(ex.getMessage())
+                .timestamp(System.currentTimeMillis())
+                .build();
+
+        return new ResponseEntity<>(build, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler
+    private ResponseEntity<ErrorResponse> handleInvalidCombinationException(InvalidCombinationException ex) {
+        ErrorResponse build = ErrorResponse.builder()
+                .message(ex.getMessage())
+                .timestamp(System.currentTimeMillis())
+                .build();
+
+        return new ResponseEntity<>(build, HttpStatus.BAD_REQUEST);
+    }
+
+
 }
