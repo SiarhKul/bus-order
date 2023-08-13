@@ -5,7 +5,7 @@ import com.example.busorder.mapper.RouteMapper;
 import com.example.busorder.models.dto.RouteRequestDTO;
 import com.example.busorder.models.entities.Route;
 import com.example.busorder.repository.RouteRepository;
-import com.example.busorder.util.RecordExistsInTable;
+import com.example.busorder.exceptions.RecordExistsInTableException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,14 +24,14 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public Route createRoute(RouteRequestDTO routeRequestDTO) throws RecordExistsInTable {
+    public Route createRoute(RouteRequestDTO routeRequestDTO) throws RecordExistsInTableException {
         verificationRecordInDB(routeRequestDTO);
 
         Route route = routeMapper.routeRequestDTOtoRoute(routeRequestDTO);
 
         return routeRepository.save(route);
     }
-    
+
     private void verificationRecordInDB(RouteRequestDTO routeRequestDTO) {
         String departureCity = routeRequestDTO.getDepartureCity();
         String destinationCity = routeRequestDTO.getDestinationCity();
@@ -39,7 +39,7 @@ public class RouteServiceImpl implements RouteService {
                 .checkDoubles(departureCity, destinationCity);
 
         if (hasDoubleRoutes) {
-            throw new RecordExistsInTable("The record exists in DB");
+            throw new RecordExistsInTableException("The record exists in DB");
         }
 
         if (departureCity.equals(destinationCity)) {

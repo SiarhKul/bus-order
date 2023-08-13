@@ -1,4 +1,4 @@
-package com.example.busorder.util;
+package com.example.busorder.exceptions;
 
 public class CityNotFoundException extends RuntimeException {
 }

@@ -1,4 +1,4 @@
-package com.example.busorder.util;
+package com.example.busorder.models.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

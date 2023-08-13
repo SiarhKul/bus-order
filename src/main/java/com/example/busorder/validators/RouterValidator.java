@@ -1,18 +1,11 @@
 package com.example.busorder.validators;
 
 import com.example.busorder.models.dto.RouteRequestDTO;
-import com.example.busorder.models.entities.City;
-import com.example.busorder.models.entities.Route;
 import com.example.busorder.repository.RouteRepository;
-import com.example.busorder.util.CityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-
-import java.sql.ResultSet;
-import java.util.List;
-import java.util.Optional;
 
 @AllArgsConstructor
 @Component

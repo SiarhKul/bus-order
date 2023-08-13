@@ -13,7 +13,7 @@ public interface RouteRepository extends JpaRepository<Route, Integer> {
                     "FROM Route r " +
                     "WHERE r.departure_city = ?1 AND r.destination_city = ?2"
     )
-    Boolean checkDoubles(String departureCity, String destinationCity);
+      Boolean checkDoubles(String departureCity, String destinationCity);
 
 /*
 @Query(

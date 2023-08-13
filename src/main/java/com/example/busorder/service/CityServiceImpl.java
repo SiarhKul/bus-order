@@ -2,7 +2,7 @@ package com.example.busorder.service;
 
 import com.example.busorder.models.entities.City;
 import com.example.busorder.repository.CityRepository;
-import com.example.busorder.util.CityNotFoundException;
+import com.example.busorder.exceptions.CityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

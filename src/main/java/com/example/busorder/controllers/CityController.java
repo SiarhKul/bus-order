@@ -2,14 +2,10 @@ package com.example.busorder.controllers;
 
 import com.example.busorder.models.entities.City;
 import com.example.busorder.service.CityService;
-import com.example.busorder.util.ErrorResponse;
-import com.example.busorder.util.CityNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

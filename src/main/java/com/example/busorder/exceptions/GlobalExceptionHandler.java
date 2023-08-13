@@ -1,9 +1,6 @@
 package com.example.busorder.exceptions;
 
-import com.example.busorder.util.CityNotFoundException;
-import com.example.busorder.util.CreteRouteException;
-import com.example.busorder.util.ErrorResponse;
-import com.example.busorder.util.RecordExistsInTable;
+import com.example.busorder.models.entities.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -37,7 +34,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler
-    private ResponseEntity<ErrorResponse> handleRecordExistsInTable(RecordExistsInTable ex) {
+    private ResponseEntity<ErrorResponse> handleRecordExistsInTable(RecordExistsInTableException ex) {
         ErrorResponse build = ErrorResponse.builder()
                 .message(ex.getMessage())
                 .timestamp(System.currentTimeMillis())
