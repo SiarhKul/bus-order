@@ -34,5 +34,5 @@ CREATE TABLE IF NOT EXISTS Booking
     date      TIMESTAMP,
     departure_city   VARCHAR,
     destination_city VARCHAR,
-    numberPeople INTEGER
+    number_people INTEGER
 )
