@@ -25,15 +25,15 @@ public class RouteController {
     private final RouteService routeService;
 
 
-    @ApiResponse(responseCode = "200", description = "Available user routes")
     @Operation(summary = "route", description = "Route destination")
+    @ApiResponse(responseCode = "200", description = "Available user routes")
     @GetMapping()
     List<Route> getAllRoute() {
         return routeService.getAllRoutes();
     }
 
-    @ApiResponse(responseCode = "200", description = "Route was created")
     @Operation(summary = "Create route based on list of city", description = "Return a created Route")
+    @ApiResponse(responseCode = "200", description = "Route was created")
     @PostMapping
     Route createRoute(@RequestBody @Valid RouteRequestDTO routeRequestDTO,
                       BindingResult bindingResult) {
