@@ -1,10 +1,10 @@
 package com.example.busorder.controllers;
 
 
+import com.example.busorder.exceptions.CreateEntityException;
 import com.example.busorder.models.dto.RouteRequestDTO;
 import com.example.busorder.models.entities.Route;
 import com.example.busorder.service.RouteService;
-import com.example.busorder.exceptions.CreteRouteException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -47,7 +47,7 @@ public class RouteController {
                         .append(error.getDefaultMessage())
                         .append(";");
             }
-            throw new CreteRouteException(errorMsg.toString());
+            throw new CreateEntityException(errorMsg.toString());
         }
 
         return routeService.createRoute(routeRequestDTO);

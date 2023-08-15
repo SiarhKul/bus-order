@@ -1,6 +1,8 @@
 package com.example.busorder.models.dto;
 
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
@@ -13,8 +15,7 @@ import java.util.Date;
 @Builder
 @ToString
 public class BookingRequestDTO {
-
-    @NotEmpty( message = "Date city is not be empty")
+//todo add Date validation
     private Date date;
 
     @NotEmpty( message = "Departure city is not be empty")
@@ -23,7 +24,7 @@ public class BookingRequestDTO {
     @NotEmpty( message = "Destination city is not be empty")
     private String destinationCity;
 
-    @NotEmpty(message = "Number of people is not be empty")
+    @Min(1)
     private Integer numberPeople;
 
 }

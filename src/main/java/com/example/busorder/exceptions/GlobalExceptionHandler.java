@@ -23,17 +23,6 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler
-    private ResponseEntity<ErrorResponse> handleCreateRouteException(CreteRouteException exception) {
-
-        ErrorResponse test = ErrorResponse.builder()
-                .message(exception.getMessage())
-                .timestamp(System.currentTimeMillis())
-                .build();
-
-        return new ResponseEntity<>(test, HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler
     private ResponseEntity<ErrorResponse> handleRecordExistsInTable(RecordExistsInTableException ex) {
         ErrorResponse build = ErrorResponse.builder()
                 .message(ex.getMessage())
@@ -51,6 +40,16 @@ public class GlobalExceptionHandler {
                 .build();
 
         return new ResponseEntity<>(build, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler
+    private ResponseEntity<ErrorResponse> handleCreateEntityException(CreateEntityException ex){
+        ErrorResponse build = ErrorResponse.builder()
+                .message(ex.getMessage())
+                .timestamp(System.currentTimeMillis())
+                .build();
+
+    return new ResponseEntity<>(build,HttpStatus.BAD_REQUEST);
     }
 
 
