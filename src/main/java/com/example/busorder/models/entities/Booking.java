@@ -20,9 +20,9 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    //todo add dependency
-    @Column(name = "client_id")
-    private int clientId;
+    @ManyToOne()
+    @JoinColumn(name = "client_id", referencedColumnName = "id")
+    private Client client;
 
     @Column(name = "status")
     private String status;
