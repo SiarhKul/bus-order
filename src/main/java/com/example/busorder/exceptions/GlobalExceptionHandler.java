@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-//todo do validation if route is exiting in the DB
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
