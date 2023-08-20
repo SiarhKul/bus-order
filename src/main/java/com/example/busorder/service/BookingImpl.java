@@ -27,7 +27,7 @@ public class BookingImpl implements BookingService {
                 .email("email@gmail.com")
                 .build();
 
-        //todo create mapper
+
 //SELECT * from schedule where (date='2023-08-10' and time > cast(now() as time))
         Booking response = Booking.builder()
                 .client(client)
