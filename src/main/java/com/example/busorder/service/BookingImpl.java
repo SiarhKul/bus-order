@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class BookingImpl implements BookingService {
     @Override
     public Booking saveBooking(BookingRequestDTO bookingRequestDTO) {
-
+//todo Add mapper
          Booking response = Booking.builder()
                 .date(bookingRequestDTO.getDate())
                 .departureCity(bookingRequestDTO.getDepartureCity())
