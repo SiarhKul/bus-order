@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -18,12 +19,12 @@ import java.util.Date;
 public class BookingRequestDTO {
 
     @Future(message = "The date must be in the future.")
-    private Date date;
+    private LocalDateTime date;
 
-    @NotEmpty( message = "Departure city is not be empty")
+    @NotEmpty(message = "Departure city is not be empty")
     private String departureCity;
 
-    @NotEmpty( message = "Destination city is not be empty")
+    @NotEmpty(message = "Destination city is not be empty")
     private String destinationCity;
 
     @Min(1)

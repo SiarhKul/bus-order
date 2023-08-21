@@ -6,6 +6,7 @@ import com.example.busorder.models.dto.RouteRequestDTO;
 import com.example.busorder.models.entities.Route;
 import com.example.busorder.repository.RouteRepository;
 import com.example.busorder.exceptions.RecordExistsInTableException;
+import com.example.busorder.service.serviceInterfaces.RouteService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

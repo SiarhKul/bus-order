@@ -1,4 +1,4 @@
-package com.example.busorder.service;
+package com.example.busorder.service.serviceInterfaces;
 
 import com.example.busorder.models.dto.RouteRequestDTO;
 import com.example.busorder.models.entities.Route;

@@ -1,4 +1,4 @@
-package com.example.busorder.service;
+package com.example.busorder.service.serviceInterfaces;
 
 import com.example.busorder.models.entities.City;
 
