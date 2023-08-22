@@ -18,6 +18,7 @@ public class ScheduleImpl implements ScheduleService {
     @Override
     public List<Schedule> getSchedule(TripDTO tripDTO) {
 
-        return scheduleRepository.findAll();
+        return scheduleRepository.getSchedule(tripDTO.getDate());
+//        return scheduleRepository.findAll();
     }
 }
