@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @ToString
 public class TripDTO {
 
-    @Future(message = "The date must be in the future.")
+    //    @Future(message = "The date must be in the future.")
     private LocalDate date;
 
     @NotEmpty(message = "Departure city is not be empty")
