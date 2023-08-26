@@ -2,6 +2,7 @@ package com.example.busorder.controllers;
 
 
 import com.example.busorder.exceptions.CreateEntityException;
+import com.example.busorder.models.dto.ScheduleDTO;
 import com.example.busorder.models.dto.TripDTO;
 import com.example.busorder.models.entities.Schedule;
 import com.example.busorder.service.serviceInterfaces.ScheduleService;
@@ -33,8 +34,8 @@ public class ScheduleController {
     @Operation(summary = "Get schedule of bus", description = "User gets some data about the bus schedule.Proved destination time, departure time, time, amount of passengers")
     @ApiResponse(responseCode = "200", description = "A Successfully response provides bus schedule date")
     @PostMapping
-    public List<Schedule> getSchedule(@RequestBody @Valid TripDTO tripDTO,
-                                      BindingResult bindingResult) {
+    public List<ScheduleDTO> getSchedule(@RequestBody @Valid TripDTO tripDTO,
+                                         BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             StringBuilder errorMsg = new StringBuilder();

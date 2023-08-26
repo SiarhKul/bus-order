@@ -6,13 +6,17 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
+
+import java.util.Collection;
 import java.util.List;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ScheduleMapper {
 
-    @Mapping(target = "departureCity", source = "departure_city")
-    @Mapping(target = "destinationCity", source = "destination_city")
-    ScheduleDTO ScheduleRsToScheduleDTO(List<Schedule> schedules);
+    @Mapping(target = "amountPassengersTest", source = "amountPassengers")
+    @Mapping(target = "dep", source = "route.departure_city")
+    @Mapping(target = "dest", source = "route.destination_city")
+    ScheduleDTO toScheduleDTO(Schedule schedule);
+    List<ScheduleDTO> toScheduleDTO(List<Schedule> schedules);
 
 }

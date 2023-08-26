@@ -18,15 +18,17 @@ public class ScheduleImpl implements ScheduleService {
     private final ScheduleMapper scheduleMapper;
 
     @Override
-    public List<Schedule> getSchedule(TripDTO tripDTO) {
+    public List<ScheduleDTO> getSchedule(TripDTO tripDTO) {
         String departureCity = tripDTO.getDepartureCity();
         String destinationCity = tripDTO.getDestinationCity();
 
-        List<Schedule> schedules = scheduleRepository.getSchedule(departureCity, destinationCity);
+        List<Schedule> schedules = scheduleRepository
+                .getSchedule(departureCity, destinationCity);
 
-        ScheduleDTO scheduleDTO = scheduleMapper.ScheduleRsToScheduleDTO(schedules);
+        List<ScheduleDTO> scheduleDTOS = scheduleMapper
+                .toScheduleDTO(schedules);
 
+        return scheduleDTOS;
 
-        return schedules;
     }
 }

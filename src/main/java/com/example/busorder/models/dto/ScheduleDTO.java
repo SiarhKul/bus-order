@@ -1,22 +1,21 @@
 package com.example.busorder.models.dto;
 
-import com.example.busorder.models.entities.Route;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
+import lombok.ToString;
 
 import java.sql.Time;
 import java.time.LocalDate;
 
-@Setter
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 @Builder
 @ToString
 public class ScheduleDTO {
 
-    private Integer id;
-    private Route route;
+
     private LocalDate date;
     private Time time;
-    private Integer amountPassengers;
+    private Integer amountPassengersTest;
+    private String dep;
+    private String dest;
 }
