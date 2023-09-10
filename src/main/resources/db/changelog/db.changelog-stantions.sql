@@ -11,11 +11,14 @@ CREATE TABLE IF NOT EXISTS Station
 INSERT INTO Station (id, city_id,station)
 VALUES (1, 1, 'Central bus station'),
        (2, 1, 'Vostok'),
-       (3, 1, 'St.M. Moscow'),
-       (4, 3, 'Central bus station'),
-       (5, 3, 'ZIP'),
-       (6, 2, 'Central bu station'),
-       (7, 2, 'Tower');
+       (3, 2, 'Central bu station'),
+       (4, 3, 'ZIP'),
+       (5, 3, 'Selmash'),
+       (6, 3, '8 March'),
+       (7, 3, 'Solnechnaja'),
+       (8, 3, 'Mandarin'),
+       (9, 3, 'Сircus'),
+       (10, 3, 'Central bus station');
 
 
 

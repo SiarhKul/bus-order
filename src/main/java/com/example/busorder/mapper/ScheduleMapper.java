@@ -16,5 +16,4 @@ public interface ScheduleMapper {
     @Mapping(target = "dest", source = "route.destination_city")
     ScheduleDTO toScheduleDTO(Schedule schedule);
     List<ScheduleDTO> toScheduleDTO(List<Schedule> schedules);
-
 }

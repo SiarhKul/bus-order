@@ -9,11 +9,11 @@ CREATE TABLE IF NOT EXISTS City
 
 --changeset skulazhanka:2
 insert into City (name) values
-                            ('Minks'),
+                            ('Minsk'),
                             ('Brest'),
-                            ('Homel'),
+                            ('Gomel'),
                             ('Vitebsk'),
-                            ('Grodo'),
+                            ('Grodno'),
                             ('Mogilev');
 
 --changeset skulazhanka:3

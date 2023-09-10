@@ -20,7 +20,7 @@ public class ConnectionImpl implements ConnectionService {
 
     private final ScheduleRepository scheduleRepository;
     private final ScheduleMapper scheduleMapper;
-    private final StationRepository stantionRepository;
+    private final StationRepository stationRepository;
 
     @Override
     public ConnectionResponseDTO getConnection(TripDTO tripDTO) {
@@ -32,11 +32,8 @@ public class ConnectionImpl implements ConnectionService {
         List<ScheduleDTO> scheduleDTOS = scheduleMapper
                 .toScheduleDTO(schedules);
 
-        List<BusStop> busStopsDepartureCity = stantionRepository.findAllStationByCityId(departureCity);
-        List<BusStop> busStopsDestination = stantionRepository.findAllStationByCityId(destinationCity);
-        System.out.println(busStopsDestination);
-        System.out.println(busStopsDepartureCity);
-
+        List<BusStop> busStopsDepartureCity = stationRepository.findAllStationByCityId(departureCity);
+        List<BusStop> busStopsDestination = stationRepository.findAllStationByCityId(destinationCity);
 
         ConnectionResponseDTO connectionResponseDTO = ConnectionResponseDTO
                 .builder()
