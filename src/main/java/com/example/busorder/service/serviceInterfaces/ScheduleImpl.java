@@ -1,6 +1,7 @@
 package com.example.busorder.service.serviceInterfaces;
 
 import com.example.busorder.mapper.ScheduleMapper;
+import com.example.busorder.models.dto.ConnectionResponseDTO;
 import com.example.busorder.models.dto.ScheduleDTO;
 import com.example.busorder.models.dto.TripDTO;
 import com.example.busorder.models.entities.Schedule;
@@ -27,12 +28,23 @@ public class ScheduleImpl implements ScheduleService {
 
         List<Schedule> schedules = scheduleRepository
                 .getSchedule(departureCity, destinationCity);
-
         List<ScheduleDTO> scheduleDTOS = scheduleMapper
                 .toScheduleDTO(schedules);
 
-        List<BusStop> all = stantionRepository.findAllStantionByCityId();
-        System.out.println(all);
+        List<BusStop> busStopsDepartureCity = stantionRepository.findAllStantionByCityId(departureCity);
+        List<BusStop> busStopsDestination = stantionRepository.findAllStantionByCityId(destinationCity);
+        System.out.println(busStopsDestination);
+        System.out.println(busStopsDepartureCity);
+
+
+        ConnectionResponseDTO connectionResponseDTO = ConnectionResponseDTO
+                .builder()
+                .scheduleDTO(scheduleDTOS)
+                .busStopsDepartureCity(busStopsDepartureCity)
+                .busStopsDestinationCity(busStopsDestination)
+                .build();
+        System.out.println(connectionResponseDTO);
+
         return scheduleDTOS;
     }
 
