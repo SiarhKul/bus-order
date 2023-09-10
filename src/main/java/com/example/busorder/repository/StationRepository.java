@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface StantionRepository extends JpaRepository<BusStop, Integer> {
+public interface StationRepository extends JpaRepository<BusStop, Integer> {
 
     @Query(value = "select bs from BusStop bs where bs.city.name=:city")
-    List<BusStop> findAllStantionByCityId( String city );
+    List<BusStop> findAllStationByCityId(String city );
 }

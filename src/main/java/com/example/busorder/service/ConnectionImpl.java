@@ -7,7 +7,7 @@ import com.example.busorder.models.dto.TripDTO;
 import com.example.busorder.models.entities.BusStop;
 import com.example.busorder.models.entities.Schedule;
 import com.example.busorder.repository.ScheduleRepository;
-import com.example.busorder.repository.StantionRepository;
+import com.example.busorder.repository.StationRepository;
 import com.example.busorder.service.serviceInterfaces.ConnectionService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class ConnectionImpl implements ConnectionService {
 
     private final ScheduleRepository scheduleRepository;
     private final ScheduleMapper scheduleMapper;
-    private final StantionRepository stantionRepository;
+    private final StationRepository stantionRepository;
 
     @Override
     public ConnectionResponseDTO getConnection(TripDTO tripDTO) {
@@ -32,8 +32,8 @@ public class ConnectionImpl implements ConnectionService {
         List<ScheduleDTO> scheduleDTOS = scheduleMapper
                 .toScheduleDTO(schedules);
 
-        List<BusStop> busStopsDepartureCity = stantionRepository.findAllStantionByCityId(departureCity);
-        List<BusStop> busStopsDestination = stantionRepository.findAllStantionByCityId(destinationCity);
+        List<BusStop> busStopsDepartureCity = stantionRepository.findAllStationByCityId(departureCity);
+        List<BusStop> busStopsDestination = stantionRepository.findAllStationByCityId(destinationCity);
         System.out.println(busStopsDestination);
         System.out.println(busStopsDepartureCity);
 
@@ -44,7 +44,6 @@ public class ConnectionImpl implements ConnectionService {
                 .busStopsDepartureCity(busStopsDepartureCity)
                 .busStopsDestinationCity(busStopsDestination)
                 .build();
-
 
         return connectionResponseDTO;
     }
