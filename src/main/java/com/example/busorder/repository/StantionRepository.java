@@ -11,7 +11,6 @@ import java.util.List;
 @Repository
 public interface StantionRepository extends JpaRepository<BusStop, Integer> {
 
-    //    @Query(value = "select bs from BusStop bs where bs.city.id=2")
     @Query(value = "select bs from BusStop bs where bs.city.name=:city")
     List<BusStop> findAllStantionByCityId( String city );
 }

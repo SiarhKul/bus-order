@@ -1,13 +1,14 @@
-package com.example.busorder.service.serviceInterfaces;
+package com.example.busorder.service;
 
 import com.example.busorder.mapper.ScheduleMapper;
 import com.example.busorder.models.dto.ConnectionResponseDTO;
 import com.example.busorder.models.dto.ScheduleDTO;
 import com.example.busorder.models.dto.TripDTO;
-import com.example.busorder.models.entities.Schedule;
 import com.example.busorder.models.entities.BusStop;
+import com.example.busorder.models.entities.Schedule;
 import com.example.busorder.repository.ScheduleRepository;
 import com.example.busorder.repository.StantionRepository;
+import com.example.busorder.service.serviceInterfaces.ConnectionService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +16,14 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class ScheduleImpl implements ScheduleService {
+public class ConnectionImpl implements ConnectionService {
 
     private final ScheduleRepository scheduleRepository;
     private final ScheduleMapper scheduleMapper;
     private final StantionRepository stantionRepository;
 
     @Override
-    public List<ScheduleDTO> getSchedule(TripDTO tripDTO) {
+    public ConnectionResponseDTO getConnection(TripDTO tripDTO) {
         String departureCity = tripDTO.getDepartureCity();
         String destinationCity = tripDTO.getDestinationCity();
 
@@ -39,13 +40,13 @@ public class ScheduleImpl implements ScheduleService {
 
         ConnectionResponseDTO connectionResponseDTO = ConnectionResponseDTO
                 .builder()
-                .scheduleDTO(scheduleDTOS)
+                .schedule(scheduleDTOS)
                 .busStopsDepartureCity(busStopsDepartureCity)
                 .busStopsDestinationCity(busStopsDestination)
                 .build();
-        System.out.println(connectionResponseDTO);
 
-        return scheduleDTOS;
+
+        return connectionResponseDTO;
     }
 
 

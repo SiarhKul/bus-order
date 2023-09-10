@@ -2,16 +2,15 @@ package com.example.busorder.controllers;
 
 
 import com.example.busorder.exceptions.CreateEntityException;
+import com.example.busorder.models.dto.ConnectionResponseDTO;
 import com.example.busorder.models.dto.ScheduleDTO;
 import com.example.busorder.models.dto.TripDTO;
-import com.example.busorder.models.entities.Schedule;
-import com.example.busorder.service.serviceInterfaces.ScheduleService;
+import com.example.busorder.service.serviceInterfaces.ConnectionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,23 +18,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.sql.ResultSet;
-import java.time.LocalDate;
 import java.util.List;
 
 @Tag(name = "Schedule")
 @RestController
 @RequestMapping("/schedule")
 @AllArgsConstructor
-public class ScheduleController {
+public class ConnectionController {
 
-    private final ScheduleService scheduleService;
+    private final ConnectionService connectionService;
 
     @Operation(summary = "Get schedule of bus", description = "User gets some data about the bus schedule.Proved destination time, departure time, time, amount of passengers")
     @ApiResponse(responseCode = "200", description = "A Successfully response provides bus schedule date")
     @PostMapping
-    public List<ScheduleDTO> getSchedule(@RequestBody @Valid TripDTO tripDTO,
-                                         BindingResult bindingResult) {
+    public ConnectionResponseDTO getSchedule(@RequestBody @Valid TripDTO tripDTO,
+                                                   BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             StringBuilder errorMsg = new StringBuilder();
@@ -48,7 +45,7 @@ public class ScheduleController {
             }
             throw new CreateEntityException(errorMsg.toString());
         }
-        return scheduleService.getSchedule(tripDTO);
+        return connectionService.getConnection(tripDTO);
     }
 
 
