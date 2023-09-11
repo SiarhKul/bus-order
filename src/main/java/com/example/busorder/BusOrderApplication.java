@@ -5,8 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class BusOrderApplication {
-    //todo create mapper
-    // todo create stantions
     public static void main(String[] args) {
         SpringApplication.run(BusOrderApplication.class, args);
 
