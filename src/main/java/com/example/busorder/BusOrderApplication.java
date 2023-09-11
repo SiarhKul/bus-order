@@ -9,7 +9,8 @@ public class BusOrderApplication {
     // todo create stantions
     public static void main(String[] args) {
         SpringApplication.run(BusOrderApplication.class, args);
-        System.out.println("run test");
+
+        System.out.println("App has been launched");
     }
 
 }
