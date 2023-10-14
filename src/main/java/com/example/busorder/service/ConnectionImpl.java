@@ -8,7 +8,7 @@ import com.example.busorder.models.entities.BusStop;
 import com.example.busorder.models.entities.Schedule;
 import com.example.busorder.repository.ScheduleRepository;
 import com.example.busorder.repository.StationRepository;
-import com.example.busorder.service.serviceInterfaces.ConnectionService;
+import com.example.busorder.service.serviceInterfaces.ScheduleService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class ConnectionImpl implements ConnectionService {
+public class ConnectionImpl implements ScheduleService {
 
     private final ScheduleRepository scheduleRepository;
     private final ScheduleMapper scheduleMapper;

@@ -28,7 +28,7 @@ public class BookingController {
 
     private final BookingService bookingService;
 
-    @Operation(summary = "Create booking",
+    @Operation(summary = "Create booking[Admin]",
             description = "User creates order and save it to DB")
     @ApiResponse(responseCode = "200", description = "Booking was created")
     @PostMapping
