@@ -2,6 +2,7 @@ package com.example.busorder.models.entities;
 
 
 import jakarta.persistence.*;
+import java.time.LocalDate;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -29,7 +30,7 @@ public class Booking {
     private String status;
 
     @Column(name = "date")
-    private LocalDateTime date;
+    private LocalDate date;
 
     @Column(name = "departure_city")
     private String departureCity;

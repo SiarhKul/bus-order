@@ -23,4 +23,6 @@ public class Route {
     @Column(name = "destination_city")
     private String destination_city;
 
+
+
 }
