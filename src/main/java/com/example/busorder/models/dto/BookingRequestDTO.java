@@ -31,3 +31,10 @@ public class BookingRequestDTO {
     private Integer numberPeople;
 
 }
+/*
+ * todo
+
+ *    3. depBusStation
+ *     4.desBusStation
+ *    5.Price
+ * * */

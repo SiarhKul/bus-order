@@ -40,3 +40,11 @@ public class Booking {
     @Column(name = "number_people")
     private Integer numberPeople;
 }
+/*
+* todo
+*    1. Status must be enum
+*    2. Need to return list of bookings when you click on order button
+*    3. depBusStation
+*     4.desBusStation
+*    5.Price
+* * */
