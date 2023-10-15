@@ -2,6 +2,7 @@ package com.example.busorder.models.entities;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import lombok.*;
 
@@ -40,6 +41,12 @@ public class Booking {
 
     @Column(name = "number_people")
     private Integer numberPeople;
+
+    @Column(name = "bus_stop_departure")
+    private String busStopDeparture;
+
+    @Column(name = "bus_stop_destination")
+    private String busStopDestination;
 }
 /*
 * todo
