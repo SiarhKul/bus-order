@@ -2,7 +2,7 @@ package com.example.busorder.controllers;
 
 
 import com.example.busorder.exceptions.CreateEntityException;
-import com.example.busorder.models.dto.ConnectionResponseDTO;
+import com.example.busorder.models.dto.ScheduleResponseDTO;
 import com.example.busorder.models.dto.TripDTO;
 import com.example.busorder.service.serviceInterfaces.ScheduleService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,8 +32,8 @@ public class ScheduleController {
                     "Proved destination time, departure time, time, amount of passengers")
     @ApiResponse(responseCode = "200", description = "A Successfully response provides bus schedule date")
     @PostMapping
-    public ConnectionResponseDTO getSchedule(@RequestBody @Valid TripDTO tripDTO,
-                                                   BindingResult bindingResult) {
+    public ScheduleResponseDTO getSchedule(@RequestBody @Valid TripDTO tripDTO,
+                                           BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             StringBuilder errorMsg = new StringBuilder();
@@ -46,7 +46,7 @@ public class ScheduleController {
             }
             throw new CreateEntityException(errorMsg.toString());
         }
-        return connectionService.getConnection(tripDTO);
+        return connectionService.getSchedule(tripDTO);
     }
 
 

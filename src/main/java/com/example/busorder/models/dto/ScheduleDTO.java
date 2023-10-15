@@ -17,15 +17,13 @@ public class ScheduleDTO {
     private Integer amountPassengersTest;
     private String dep;
     private String dest;
+    private Integer ticketPrice;
+
 }
 
 /*
 * todo: Add price and amount of available seats
 *  {
-            "date": "2023-01-01",
-            "time": "13:30:00",
-            "amountPassengersTest": 3,
-            "dep": "Minsk",
-            "dest": "Grodno"
+
         },
 * * */

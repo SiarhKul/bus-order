@@ -1,7 +1,7 @@
 package com.example.busorder.service;
 
 import com.example.busorder.mapper.ScheduleMapper;
-import com.example.busorder.models.dto.ConnectionResponseDTO;
+import com.example.busorder.models.dto.ScheduleResponseDTO;
 import com.example.busorder.models.dto.ScheduleDTO;
 import com.example.busorder.models.dto.TripDTO;
 import com.example.busorder.models.entities.BusStop;
@@ -16,26 +16,27 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class ConnectionImpl implements ScheduleService {
+public class ScheduleImpl implements ScheduleService {
 
     private final ScheduleRepository scheduleRepository;
     private final ScheduleMapper scheduleMapper;
     private final StationRepository stationRepository;
 
     @Override
-    public ConnectionResponseDTO getConnection(TripDTO tripDTO) {
+    public ScheduleResponseDTO getSchedule(TripDTO tripDTO) {
         String departureCity = tripDTO.getDepartureCity();
         String destinationCity = tripDTO.getDestinationCity();
 
         List<Schedule> schedules = scheduleRepository
                 .getSchedule(departureCity, destinationCity);
+
         List<ScheduleDTO> scheduleDTOS = scheduleMapper
                 .toScheduleDTO(schedules);
 
         List<BusStop> busStopsDepartureCity = stationRepository.findAllStationByCityId(departureCity);
         List<BusStop> busStopsDestination = stationRepository.findAllStationByCityId(destinationCity);
 
-        ConnectionResponseDTO connectionResponseDTO = ConnectionResponseDTO
+        ScheduleResponseDTO connectionResponseDTO = ScheduleResponseDTO
                 .builder()
                 .schedule(scheduleDTOS)
                 .busStopsDepartureCity(busStopsDepartureCity)
