@@ -51,7 +51,3 @@ public class BookingController {
         return booking;
     }
 }
-/*
-* depBusStation
-* desBusStation*
-* * */

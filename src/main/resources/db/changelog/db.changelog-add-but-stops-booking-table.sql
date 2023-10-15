@@ -8,3 +8,6 @@ alter table booking
 alter table booking
     add bus_stop_destination varchar;
 
+--changeset skulazhanka:3
+alter table booking
+    add time time;

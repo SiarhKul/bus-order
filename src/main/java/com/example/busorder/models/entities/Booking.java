@@ -3,6 +3,7 @@ package com.example.busorder.models.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import java.sql.Time;
 import java.time.LocalDate;
 import lombok.*;
 
@@ -33,14 +34,18 @@ public class Booking {
     @Column(name = "date")
     private LocalDate date;
 
+    @Column(name = "time")
+    private Time time;
+
+    @Column(name = "number_people")
+    private Integer numberPeople;
+
     @Column(name = "departure_city")
     private String departureCity;
 
     @Column(name = "destination_city")
     private String destinationCity;
 
-    @Column(name = "number_people")
-    private Integer numberPeople;
 
     @Column(name = "bus_stop_departure")
     private String busStopDeparture;
@@ -51,8 +56,5 @@ public class Booking {
 /*
 * todo
 *    1. Status must be enum
-*    2. Need to return list of bookings when you click on order button
-*    3. depBusStation
-*     4.desBusStation
 *    5.Price
 * * */

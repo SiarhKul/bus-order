@@ -28,6 +28,7 @@ public class BookingRequestDTO {
 
     @Min(1)
     private Integer numberPeople;
+
     //todo Create enum
     @NotEmpty(message = "Departure city is not be empty")
     private String departureCity;
