@@ -1,6 +1,7 @@
 package com.example.busorder.models.entities;
 
 
+import com.example.busorder.enums.BookingStatus;
 import com.example.busorder.enums.Cities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
@@ -29,8 +30,9 @@ public class Booking {
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     private Client client;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private String status;
+    private BookingStatus status;
 
     @Column(name = "date")
     private LocalDate date;

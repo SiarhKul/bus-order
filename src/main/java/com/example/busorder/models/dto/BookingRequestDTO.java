@@ -33,7 +33,6 @@ public class BookingRequestDTO {
     @Min(1)
     private Integer numberPeople;
 
-    //todo Create enum
     @NotNull
     @Valid
     private Cities departureCity;
@@ -55,8 +54,5 @@ public class BookingRequestDTO {
 }
 /*
  * todo
-
- *    3. depBusStation
- *     4.desBusStation
  *    5.Price
  * * */
