@@ -3,6 +3,7 @@ package com.example.busorder.models.dto;
 import com.example.busorder.enums.BookingStatus;
 import com.example.busorder.enums.Cities;
 import com.example.busorder.models.entities.Client;
+import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.persistence.Column;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Future;
@@ -40,4 +41,4 @@ public class BookingResponseDTO {
 /*
  * todo
  *    5.Price
- * * */
+  */

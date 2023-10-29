@@ -23,7 +23,4 @@ public class ScheduleDTO {
 
 /*
 * todo: Add price and amount of available seats
-*  {
-
-        },
-* * */
+ */

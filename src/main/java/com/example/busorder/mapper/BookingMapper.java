@@ -8,7 +8,6 @@ import com.example.busorder.models.entities.Client;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
-import org.mapstruct.Named;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
         imports = {BookingStatus.class})
@@ -19,10 +18,7 @@ public interface BookingMapper {
     @Mapping(target = "client", expression = "java(createDefaultClient())")
     Booking toBooking(BookingRequestDTO bookingRequestDTO);
 
-//    @Mapping(target = "status", source = "status", qualifiedByName = "convertEnumToLoverCase")
     BookingResponseDTO toBookingResponseDTO(Booking booking);
-
-
 
     default Client createDefaultClient() {
         Client client = Client.builder()
@@ -35,10 +31,6 @@ public interface BookingMapper {
         return client;
     }
 
-    @Named("convertEnumToLoverCase")
-    default BookingStatus convertEnumToLoverCase(BookingStatus status) {
-        return BookingStatus.valueOf(status.name());
-    }
 
 }
 

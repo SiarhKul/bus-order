@@ -1,6 +1,6 @@
 package com.example.busorder.enums;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum BookingStatus {
     FUTURE("Future"),
@@ -8,6 +8,7 @@ public enum BookingStatus {
 
     private final String status;
 
+    @JsonValue
     public String getStatus() {
         return status;
     }
@@ -21,16 +22,4 @@ public enum BookingStatus {
         return status;
     }
 
-    @JsonCreator
-    public static BookingStatus create (String name) {
-        if(name == null) {
-            throw new IllegalArgumentException("Enter any city");
-        }
-        for(BookingStatus status : values()) {
-            if(name.equals(status.getStatus())) {
-                return status;
-            }
-        }
-        throw new IllegalArgumentException("Enter correct city");
-    }
 }
