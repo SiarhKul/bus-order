@@ -11,6 +11,9 @@ public class BusOrderApplication {
     public static void main(String[] args) {
         SpringApplication.run(BusOrderApplication.class, args);
         System.out.println("run test");
+
+        System.out.println(  BookingStatus.valueOf("FUTURE"));
+
     }
 
 }

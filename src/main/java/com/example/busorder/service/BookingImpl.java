@@ -2,6 +2,7 @@ package com.example.busorder.service;
 
 import com.example.busorder.mapper.BookingMapper;
 import com.example.busorder.models.dto.BookingRequestDTO;
+import com.example.busorder.models.dto.BookingResponseDTO;
 import com.example.busorder.models.entities.Booking;
 import com.example.busorder.models.entities.Client;
 import com.example.busorder.repository.BookingRepository;
@@ -18,10 +19,12 @@ public class BookingImpl implements BookingService {
 
 
     @Override
-    public Booking saveBooking(BookingRequestDTO bookingRequestDTO) {
+    public BookingResponseDTO saveBooking(BookingRequestDTO bookingRequestDTO) {
 
         Booking booking = bookingMapper.toBooking(bookingRequestDTO);
 
-        return bookingRepository.save(booking);
+        Booking returnedBooking = bookingRepository.save(booking);
+
+        return bookingMapper.toBookingResponseDTO(returnedBooking);
     }
 }

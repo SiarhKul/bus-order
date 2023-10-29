@@ -33,7 +33,4 @@ public enum BookingStatus {
         }
         throw new IllegalArgumentException("Enter correct city");
     }
-
-
-
 }
