@@ -33,4 +33,7 @@ public class Client {
 
     @Column(name = "e_mail")
     private String email;
+
+    @Column(name = "password")
+    private String password;
 }
