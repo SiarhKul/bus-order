@@ -19,8 +19,8 @@ public class Client {
     @Column(name = "Id")
     private Integer id;
 
-    @OneToMany(mappedBy = "client")
-    private List<Booking> booking;
+//    @OneToMany(mappedBy = "client")
+//    private List<Booking> booking;
 
     @Column(name = "name")
     private String name;
