@@ -25,9 +25,8 @@ public class CityController {
         return cityServiece.getAllCity();
     }
 
-
-    @ApiResponse(responseCode = "200", description = "City name is returned")
-    @Operation(summary = "name-city", description = "description name-city")
+    @ApiResponse(responseCode = "200", description = "City name is returned[Admin]")
+    @Operation(summary = "name-city[Admin]", description = "description name-city")
     @GetMapping("/city-name/{cityId}")
     public City getCityById(@PathVariable("cityId") Integer cityId) {
         return cityServiece.getCityById(cityId);

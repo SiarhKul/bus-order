@@ -11,9 +11,16 @@ import java.time.LocalDate;
 @Builder
 public class ScheduleDTO {
 
+    private Integer id;
     private LocalDate date;
     private Time time;
     private Integer amountPassengersTest;
     private String dep;
     private String dest;
+    private Integer ticketPrice;
+
 }
+
+/*
+* todo: Add price and amount of available seats
+ */

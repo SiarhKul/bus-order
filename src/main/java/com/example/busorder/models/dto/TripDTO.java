@@ -1,5 +1,6 @@
 package com.example.busorder.models.dto;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;

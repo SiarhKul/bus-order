@@ -1,0 +1,19 @@
+version: "3.9"
+
+volumes:
+  db-data:
+
+services:
+  database:
+    container_name: bus-order-compose
+    image: postgres:14.1
+    environment:
+      POSTGRES_DB: "bus-order-db"
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "password"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+
+#  https://sysout.ru/spring-boot-postgresql-js-v-dosker/

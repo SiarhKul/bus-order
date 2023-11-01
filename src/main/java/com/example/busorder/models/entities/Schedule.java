@@ -35,4 +35,7 @@ public class Schedule {
     @Column(name = "amount_passengers")
     private Integer amountPassengers;
 
+    @Column(name = "ticket_price")
+    private Integer ticketPrice;
+
 }

@@ -1,6 +1,8 @@
 package com.example.busorder.service;
 
+import com.example.busorder.mapper.BookingMapper;
 import com.example.busorder.models.dto.BookingRequestDTO;
+import com.example.busorder.models.dto.BookingResponseDTO;
 import com.example.busorder.models.entities.Booking;
 import com.example.busorder.models.entities.Client;
 import com.example.busorder.repository.BookingRepository;
@@ -13,32 +15,16 @@ import org.springframework.stereotype.Service;
 public class BookingImpl implements BookingService {
 
     private final BookingRepository bookingRepository;
+    private final BookingMapper bookingMapper;
+
 
     @Override
-    public Booking saveBooking(BookingRequestDTO bookingRequestDTO) {
+    public BookingResponseDTO saveBooking(BookingRequestDTO bookingRequestDTO) {
 
+        Booking booking = bookingMapper.toBooking(bookingRequestDTO);
 
-        Client client = Client.builder()
-                .id(1)
-                .name("Bon")
-                .surname("Bobson")
-                .mobilePhone(123456789)
-                .email("email@gmail.com")
-                .build();
+        Booking returnedBooking = bookingRepository.save(booking);
 
-
-//SELECT * from schedule where (date='2023-08-10' and time > cast(now() as time))
-        Booking response = Booking.builder()
-                .client(client)
-                .status("START")
-                .date(bookingRequestDTO.getDate())
-                .departureCity(bookingRequestDTO.getDepartureCity())
-                .destinationCity(bookingRequestDTO.getDestinationCity())
-                .numberPeople(bookingRequestDTO.getNumberPeople())
-                .build();
-
-        return bookingRepository.save(response);
-
-//        return response;
+        return bookingMapper.toBookingResponseDTO(returnedBooking);
     }
 }

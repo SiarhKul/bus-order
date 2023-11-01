@@ -11,6 +11,7 @@ import java.util.List;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ScheduleMapper {
 
+    @Mapping(target = "id", source = "id")
     @Mapping(target = "amountPassengersTest", source = "amountPassengers")
     @Mapping(target = "dep", source = "route.departure_city")
     @Mapping(target = "dest", source = "route.destination_city")

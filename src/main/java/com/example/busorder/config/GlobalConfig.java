@@ -6,7 +6,9 @@ import org.springframework.context.annotation.Configuration;
 
 @OpenAPIDefinition(info = @Info(
         title = "Order bus",
-        description = "Order Bus API"))
+        description = "Order Bus API",
+        version = "0.0.1"
+))
 @Configuration
 public class GlobalConfig {
 

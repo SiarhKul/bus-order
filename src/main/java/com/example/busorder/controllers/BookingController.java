@@ -3,6 +3,7 @@ package com.example.busorder.controllers;
 
 import com.example.busorder.exceptions.CreateEntityException;
 import com.example.busorder.models.dto.BookingRequestDTO;
+import com.example.busorder.models.dto.BookingResponseDTO;
 import com.example.busorder.models.entities.Booking;
 import com.example.busorder.service.serviceInterfaces.BookingService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -28,12 +29,13 @@ public class BookingController {
 
     private final BookingService bookingService;
 
+
     @Operation(summary = "Create booking",
-            description = "User creates order and save it to DB")
+            description = "User creates order and save it to the DB")
     @ApiResponse(responseCode = "200", description = "Booking was created")
     @PostMapping
-    Booking saveBooking(@RequestBody @Valid BookingRequestDTO bookingRequestDTO,
-                        BindingResult bindingResult) {
+    BookingResponseDTO saveBooking(@RequestBody @Valid BookingRequestDTO bookingRequestDTO,
+                                   BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             StringBuilder errorMsg = new StringBuilder();
@@ -47,7 +49,7 @@ public class BookingController {
             throw new CreateEntityException(errorMsg.toString());
         }
 
-        Booking booking = bookingService.saveBooking(bookingRequestDTO);
+        BookingResponseDTO booking = bookingService.saveBooking(bookingRequestDTO);
         return booking;
     }
 }
