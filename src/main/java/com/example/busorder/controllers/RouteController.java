@@ -1,6 +1,6 @@
 package com.example.busorder.controllers;
 
-
+import com.example.busorder.config.producer.KafkaRouteProducer;
 import com.example.busorder.exceptions.CreateEntityException;
 import com.example.busorder.models.dto.RouteRequestDTO;
 import com.example.busorder.models.entities.Route;
@@ -23,7 +23,7 @@ import java.util.List;
 public class RouteController {
 
     private final RouteService routeService;
-
+    private final KafkaRouteProducer kafkaRouteProducer;
 
     @Operation(summary = "route[Admin]", description = "Route destination")
     @ApiResponse(responseCode = "200", description = "Available user routes")
@@ -51,7 +51,10 @@ public class RouteController {
             throw new CreateEntityException(errorMsg.toString());
         }
 
-        return routeService.createRoute(routeRequestDTO);
-    }
+        Route route = routeService.createRoute(routeRequestDTO);
 
+        kafkaRouteProducer.sendRoute(route);
+
+        return route;
+    }
 }
