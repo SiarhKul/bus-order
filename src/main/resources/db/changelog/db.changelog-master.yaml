@@ -13,3 +13,5 @@ databaseChangeLog:
       file: db/changelog/db.changelog-add-but-stops-booking-table.sql
   - include:
       file: db/changelog/db.changelog-add-ticket-price-field-schedule-table.sql
+  - include:
+      file: db/changelog/db.changelog-add-passwod-user.sql

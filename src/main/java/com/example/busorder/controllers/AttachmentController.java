@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class AttachmentController {
 
-    final AttachmentService attachmentService;
+   private final AttachmentService attachmentService;
 
     @PostMapping("/{userId}")
     void startUpload(@PathVariable("userId") UUID userId,

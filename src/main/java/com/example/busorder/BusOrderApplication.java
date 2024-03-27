@@ -16,7 +16,7 @@ public class BusOrderApplication {
         System.out.println("The app is running...");
     }
 
-    @Bean
+/*    @Bean
     public CommandLineRunner commandLineRunner(RouteServiceImpl routeService,
                                                KafkaRouteProducer kafkaRouteProducer) {
 
@@ -24,7 +24,7 @@ public class BusOrderApplication {
             routeService.getAllRoutes().forEach(kafkaRouteProducer::sendRoute);
             System.out.println("Send message to the Kafka topic");
         };
-    }
+    }*/
 
 }
 

@@ -30,3 +30,14 @@ springdoc:
   swagger-ui:
     try-it-out-enabled: true
     path: /swagger-ui
+
+aws:
+  client:
+    region: ${AWS_CLIENT_REGION}
+  s3:
+    bucket:
+      attachments: ${AWS_S3_ATTACHMENTS_BUCKET}
+    presigned-url:
+      expiration:
+        seconds: 120
+    uri: ${AWS_S3_URL:}
