@@ -1,6 +1,8 @@
 package com.example.busorder.controllers;
 
+import com.example.busorder.mapper.AttachmentMapper;
 import com.example.busorder.models.dto.NewAttachmentDTO;
+import com.example.busorder.models.entities.Attachment;
 import com.example.busorder.service.serviceInterfaces.AttachmentService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -21,11 +23,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class AttachmentController {
 
    private final AttachmentService attachmentService;
+    private final AttachmentMapper attachmentMapper;
 
     @PostMapping("/{userId}")
     void startUpload(@PathVariable("userId") UUID userId,
                      @Valid @RequestBody NewAttachmentDTO newAttachmentDTO) {
-        attachmentService.startUpload(userId, newAttachmentDTO);
+        Attachment attachment = attachmentMapper.attachmentDTOtoAttachment(newAttachmentDTO);
+
+
+        attachmentService.startUpload(userId, attachment);
 
     }
 }

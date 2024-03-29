@@ -19,7 +19,7 @@ public class NewAttachmentDTO {
     @NotBlank
     @Size(max = 255, min = 1)
     @JsonProperty("fileName")
-    private String name;
+    private String fileName;
 
     @NotNull
     @Min(1)
