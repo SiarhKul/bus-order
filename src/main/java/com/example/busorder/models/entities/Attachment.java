@@ -42,8 +42,8 @@ public class Attachment {
     @Column(name = "uploaded_timestamp", nullable = false)
     private LocalDateTime uploadedTimestamp;
 
-    @Column(name = "uploaded_by", nullable = false)
-    private UUID uploadedBy;
+//    @Column(name = "uploaded_by", nullable = false)
+//    private UUID uploadedBy;
 
 //    @Column(name = "status", nullable = false)
 //    @Enumerated(value = EnumType.STRING)
