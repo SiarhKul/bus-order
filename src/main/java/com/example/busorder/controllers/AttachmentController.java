@@ -6,6 +6,8 @@ import com.example.busorder.models.dto.NewAttachmentDTO;
 import com.example.busorder.models.dto.PresignedResponseDTO;
 import com.example.busorder.models.entities.Attachment;
 import com.example.busorder.service.serviceInterfaces.AttachmentService;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import java.util.UUID;
@@ -13,6 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,4 +38,15 @@ public class AttachmentController {
         PresignedResponseDTO storageRequest = attachmentService.startUpload(userId, attachment);
         return storageRequest;
     }
+
+    @PutMapping("/{userId}/{attachmentId}")
+    public void finishUpload(
+            @PathVariable("userId") UUID userId,
+            @PathVariable("attachmentId") UUID attachmentId) {
+        attachmentService.finishUpload(userId, attachmentId);
+//        return attachmentMapper.contractAttachmentToDetailsDto(contractAttachment);
+    }
+
 }
+
+

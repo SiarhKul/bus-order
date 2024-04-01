@@ -1,5 +1,6 @@
 package com.example.busorder.service;
 
+import com.example.busorder.enums.AttachmentStatus;
 import com.example.busorder.models.StorageRequest;
 import com.example.busorder.models.dto.NewAttachmentDTO;
 import com.example.busorder.models.dto.PresignedResponseDTO;
@@ -40,6 +41,7 @@ public class AttachmentServiceImp implements AttachmentService {
     public PresignedResponseDTO startUpload(UUID userId, Attachment attachment) {
         attachment.setUserId(userId);
         attachment.setUploadedTimestamp(LocalDateTime.now());
+        attachment.setStatus(AttachmentStatus.PENDING);
 
         Attachment savedAttachment = attachmentRepository.save(attachment);
 
@@ -61,6 +63,15 @@ public class AttachmentServiceImp implements AttachmentService {
                 presignedRequest.httpRequest().method().name()
         );
 
+    }
+
+    @Override
+    public void finishUpload(UUID userId, UUID attachmentId) {
+        attachmentRepository.findByUserIdAndId(userId, attachmentId)
+                .ifPresent(attachment -> {
+                    attachment.setStatus(AttachmentStatus.UPLOADED);
+                    attachmentRepository.save(attachment);
+                });
     }
 
     private String getObjectKey(Attachment newAttachmentDTO) {
