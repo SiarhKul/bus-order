@@ -42,7 +42,15 @@ public class AttachmentController {
 
     @PutMapping("/{userId}/{attachmentId}")
     public UploadedAttachmentDTO finishUpload(
+            @Parameter(name = "contractId",
+                    in = ParameterIn.PATH,
+                    required = true,
+                    description = "Id of user who uploaded the attachment")
             @PathVariable("userId") UUID userId,
+            @Parameter(name = "attachmentId",
+                    in = ParameterIn.PATH,
+                    required = true,
+                    description = "Id of the attachment to finish upload")
             @PathVariable("attachmentId") UUID attachmentId) {
 
         Attachment attachment = attachmentService.finishUpload(userId, attachmentId);
