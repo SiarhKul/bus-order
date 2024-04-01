@@ -2,6 +2,7 @@ package com.example.busorder.service;
 
 import com.example.busorder.models.StorageRequest;
 import com.example.busorder.models.dto.NewAttachmentDTO;
+import com.example.busorder.models.dto.PresignedResponseDTO;
 import com.example.busorder.models.entities.Attachment;
 import com.example.busorder.repository.AttachmentRepository;
 import com.example.busorder.service.serviceInterfaces.AttachmentService;
@@ -36,7 +37,7 @@ public class AttachmentServiceImp implements AttachmentService {
     private Long presignedUrlTtlSeconds;
 
     @Override
-    public StorageRequest startUpload(UUID userId, Attachment attachment) {
+    public PresignedResponseDTO startUpload(UUID userId, Attachment attachment) {
         attachment.setUserId(userId);
         attachment.setUploadedTimestamp(LocalDateTime.now());
 
@@ -54,11 +55,14 @@ public class AttachmentServiceImp implements AttachmentService {
 
         PresignedPutObjectRequest presignedRequest = s3Presigner.presignPutObject(presignRequest);
 
-        return new StorageRequest(
+        return new PresignedResponseDTO(
+                savedAttachment.getId(),
                 presignedRequest.url(),
-                presignedRequest.httpRequest().method().name());
+                presignedRequest.httpRequest().method().name()
+        );
 
     }
+
     private String getObjectKey(Attachment newAttachmentDTO) {
         return Objects.requireNonNull(newAttachmentDTO.getUserId())
                 + "/"

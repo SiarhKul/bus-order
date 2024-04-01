@@ -3,6 +3,7 @@ package com.example.busorder.controllers;
 import com.example.busorder.mapper.AttachmentMapper;
 import com.example.busorder.models.StorageRequest;
 import com.example.busorder.models.dto.NewAttachmentDTO;
+import com.example.busorder.models.dto.PresignedResponseDTO;
 import com.example.busorder.models.entities.Attachment;
 import com.example.busorder.service.serviceInterfaces.AttachmentService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -23,15 +24,15 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class AttachmentController {
 
-   private final AttachmentService attachmentService;
-   private final AttachmentMapper attachmentMapper;
+    private final AttachmentService attachmentService;
+    private final AttachmentMapper attachmentMapper;
 
     @PostMapping("/{userId}")
-    StorageRequest startUpload(@PathVariable("userId") UUID userId,
-                     @Valid @RequestBody NewAttachmentDTO newAttachmentDTO) {
+    PresignedResponseDTO startUpload(@PathVariable("userId") UUID userId,
+                                     @Valid @RequestBody NewAttachmentDTO newAttachmentDTO) {
         Attachment attachment = attachmentMapper.attachmentDTOtoAttachment(newAttachmentDTO);
 
-        StorageRequest storageRequest = attachmentService.startUpload(userId, attachment);
-return storageRequest;
+        PresignedResponseDTO storageRequest = attachmentService.startUpload(userId, attachment);
+        return storageRequest;
     }
 }

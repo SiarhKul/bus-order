@@ -1,5 +1,6 @@
 package com.example.busorder.models.entities;
 
+import com.example.busorder.enums.AttachmentStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -45,7 +46,7 @@ public class Attachment {
 //    @Column(name = "uploaded_by", nullable = false)
 //    private UUID uploadedBy;
 
-//    @Column(name = "status", nullable = false)
-//    @Enumerated(value = EnumType.STRING)
-//    private AttachmentStatus status;
+    @Column(name = "status", nullable = false)
+    @Enumerated(value = EnumType.STRING)
+    private AttachmentStatus status;
 }
