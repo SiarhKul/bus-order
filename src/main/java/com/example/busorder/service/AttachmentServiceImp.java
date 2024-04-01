@@ -62,18 +62,17 @@ public class AttachmentServiceImp implements AttachmentService {
                 presignedRequest.url(),
                 presignedRequest.httpRequest().method().name()
         );
-
     }
 
     @Override
-    public void finishUpload(UUID userId, UUID attachmentId) {
-        attachmentRepository.findByUserIdAndId(userId, attachmentId)
-                .ifPresent(attachment -> {
+    public Attachment finishUpload(UUID userId, UUID attachmentId) {
+        return attachmentRepository.findByUserIdAndId(userId, attachmentId)
+                .map(attachment -> {
                     attachment.setStatus(AttachmentStatus.UPLOADED);
-                    attachmentRepository.save(attachment);
-                });
+                    return attachmentRepository.save(attachment);
+                })
+                .orElse(null);
     }
-
     private String getObjectKey(Attachment newAttachmentDTO) {
         return Objects.requireNonNull(newAttachmentDTO.getUserId())
                 + "/"

@@ -10,5 +10,5 @@ import org.springframework.lang.NonNull;
 public interface AttachmentService {
     PresignedResponseDTO startUpload(@NonNull UUID userId, Attachment attachment);
 
-    void finishUpload(@NonNull UUID userId, @NonNull UUID attachmentId);
+    Attachment finishUpload(@NonNull UUID userId, @NonNull UUID attachmentId);
 }

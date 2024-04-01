@@ -4,6 +4,7 @@ import com.example.busorder.mapper.AttachmentMapper;
 import com.example.busorder.models.StorageRequest;
 import com.example.busorder.models.dto.NewAttachmentDTO;
 import com.example.busorder.models.dto.PresignedResponseDTO;
+import com.example.busorder.models.dto.UploadedAttachmentDTO;
 import com.example.busorder.models.entities.Attachment;
 import com.example.busorder.service.serviceInterfaces.AttachmentService;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -40,11 +41,13 @@ public class AttachmentController {
     }
 
     @PutMapping("/{userId}/{attachmentId}")
-    public void finishUpload(
+    public UploadedAttachmentDTO finishUpload(
             @PathVariable("userId") UUID userId,
             @PathVariable("attachmentId") UUID attachmentId) {
-        attachmentService.finishUpload(userId, attachmentId);
-//        return attachmentMapper.contractAttachmentToDetailsDto(contractAttachment);
+
+        Attachment attachment = attachmentService.finishUpload(userId, attachmentId);
+
+        return attachmentMapper.attachmentToUploadedAttachmentDTO(attachment);
     }
 
 }
