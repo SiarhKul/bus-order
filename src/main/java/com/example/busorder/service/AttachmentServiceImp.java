@@ -10,6 +10,7 @@ import com.example.busorder.service.serviceInterfaces.AttachmentService;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.function.Consumer;
@@ -73,6 +74,13 @@ public class AttachmentServiceImp implements AttachmentService {
                 })
                 .orElse(null);
     }
+
+    @Override
+    public List<Attachment> getAttachments(UUID userId) {
+        return  attachmentRepository.findByUserId(userId);
+
+    }
+
     private String getObjectKey(Attachment newAttachmentDTO) {
         return Objects.requireNonNull(newAttachmentDTO.getUserId())
                 + "/"

@@ -11,9 +11,11 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import java.util.List;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -54,8 +56,21 @@ public class AttachmentController {
             @PathVariable("attachmentId") UUID attachmentId) {
 
         Attachment attachment = attachmentService.finishUpload(userId, attachmentId);
-
         return attachmentMapper.attachmentToUploadedAttachmentDTO(attachment);
+    }
+
+    @GetMapping("/{userId}")
+    public List<UploadedAttachmentDTO> getAttachments(
+            @Parameter(name = "userId",
+                    in = ParameterIn.PATH,
+                    required = true,
+                    description = "Id of user who uploaded the attachment")
+            @PathVariable("userId") UUID userId) {
+        List<Attachment> attachments = attachmentService.getAttachments(userId);
+
+        List<UploadedAttachmentDTO> uploadedAttachmentDTOS =
+                attachmentMapper.attachmentsToUploadedAttachmentDTOs(attachments);
+        return  uploadedAttachmentDTOS;
     }
 
 }
