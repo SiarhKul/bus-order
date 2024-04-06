@@ -19,6 +19,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.DeleteObjectRequest;
+import software.amazon.awssdk.services.s3.model.DeleteObjectResponse;
 import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.services.s3.presigner.model.PresignedPutObjectRequest;
@@ -79,6 +81,23 @@ public class AttachmentServiceImp implements AttachmentService {
     public List<Attachment> getAttachments(UUID userId) {
         return  attachmentRepository.findByUserId(userId);
 
+    }
+
+    @Override
+    public void deleteAttachment(UUID userId, UUID attachmentId) {
+        Attachment attachment = attachmentRepository.findByUserIdAndId(userId, attachmentId)
+                .orElseThrow(() -> new IllegalArgumentException("Attachment not found"));
+        attachmentRepository.delete(attachment);
+        deleteAttachmentS3Bucket(getObjectKey(attachment));
+    }
+
+
+    private void deleteAttachmentS3Bucket(String objectKey) {
+        DeleteObjectRequest deleteRequest = DeleteObjectRequest.builder()
+                .bucket(attachmentsBucket)
+                .key(objectKey)
+                .build();
+        DeleteObjectResponse deleteObjectResponse = s3Client.deleteObject(deleteRequest);
     }
 
     private String getObjectKey(Attachment newAttachmentDTO) {

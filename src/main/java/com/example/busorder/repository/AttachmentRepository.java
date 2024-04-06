@@ -10,4 +10,6 @@ public interface AttachmentRepository extends JpaRepository<Attachment, UUID> {
     Optional<Attachment> findByUserIdAndId(UUID userId, UUID attachmentId);
 
     List<Attachment> findByUserId(UUID userId);
+
+    Optional<Attachment> findByAttachmentIdAndUserId(UUID attachmentId, UUID userId);
 }

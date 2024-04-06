@@ -15,4 +15,5 @@ public interface AttachmentService {
 
     List<Attachment> getAttachments(@NonNull UUID userId);
 
+    void deleteAttachment(UUID userId, UUID attachmentId);
 }
