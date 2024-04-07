@@ -2,6 +2,7 @@ package com.example.busorder.service;
 
 import com.example.busorder.enums.AttachmentStatus;
 import com.example.busorder.models.StorageRequest;
+import com.example.busorder.models.dto.DeleteAttachmentResponseDTO;
 import com.example.busorder.models.dto.NewAttachmentDTO;
 import com.example.busorder.models.dto.PresignedResponseDTO;
 import com.example.busorder.models.entities.Attachment;
@@ -79,25 +80,31 @@ public class AttachmentServiceImp implements AttachmentService {
 
     @Override
     public List<Attachment> getAttachments(UUID userId) {
-        return  attachmentRepository.findByUserId(userId);
-
+        return attachmentRepository.findByUserId(userId);
     }
 
     @Override
-    public void deleteAttachment(UUID userId, UUID attachmentId) {
-        Attachment attachment = attachmentRepository.findByUserIdAndId(userId, attachmentId)
-                .orElseThrow(() -> new IllegalArgumentException("Attachment not found"));
+    public DeleteAttachmentResponseDTO deleteAttachment(UUID userId, UUID attachmentId) {
+        Attachment attachment = attachmentRepository.findByUserIdAndId(userId, attachmentId).orElseThrow(
+                () -> new IllegalArgumentException("Attachment not found")
+        );
         attachmentRepository.delete(attachment);
-        deleteAttachmentS3Bucket(getObjectKey(attachment));
+        return deleteAttachmentS3Bucket(getObjectKey(attachment));
     }
 
-
-    private void deleteAttachmentS3Bucket(String objectKey) {
+    private DeleteAttachmentResponseDTO deleteAttachmentS3Bucket(String objectKey) {
         DeleteObjectRequest deleteRequest = DeleteObjectRequest.builder()
                 .bucket(attachmentsBucket)
                 .key(objectKey)
                 .build();
+        log.info("Deleting object with key: {}", objectKey);
         DeleteObjectResponse deleteObjectResponse = s3Client.deleteObject(deleteRequest);
+        log.info("Object deleted: {}", deleteObjectResponse);
+
+        return DeleteAttachmentResponseDTO.builder()
+                .deletedTimestamp(LocalDateTime.now())
+                .deleteMarker(true)
+                .build();
     }
 
     private String getObjectKey(Attachment newAttachmentDTO) {

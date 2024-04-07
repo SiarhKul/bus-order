@@ -1,7 +1,6 @@
 package com.example.busorder.service.serviceInterfaces;
 
-import com.example.busorder.models.StorageRequest;
-import com.example.busorder.models.dto.NewAttachmentDTO;
+import com.example.busorder.models.dto.DeleteAttachmentResponseDTO;
 import com.example.busorder.models.dto.PresignedResponseDTO;
 import com.example.busorder.models.entities.Attachment;
 import java.util.List;
@@ -15,5 +14,5 @@ public interface AttachmentService {
 
     List<Attachment> getAttachments(@NonNull UUID userId);
 
-    void deleteAttachment(UUID userId, UUID attachmentId);
+    DeleteAttachmentResponseDTO deleteAttachment(UUID userId, UUID attachmentId);
 }

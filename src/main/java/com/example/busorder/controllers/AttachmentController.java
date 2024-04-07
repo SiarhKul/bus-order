@@ -2,6 +2,7 @@ package com.example.busorder.controllers;
 
 import com.example.busorder.mapper.AttachmentMapper;
 import com.example.busorder.models.StorageRequest;
+import com.example.busorder.models.dto.DeleteAttachmentResponseDTO;
 import com.example.busorder.models.dto.NewAttachmentDTO;
 import com.example.busorder.models.dto.PresignedResponseDTO;
 import com.example.busorder.models.dto.UploadedAttachmentDTO;
@@ -75,8 +76,8 @@ public class AttachmentController {
     }
 
     @DeleteMapping("/{userId}/{attachmentId}")
-    public void deleteAttachment(@PathVariable UUID userId, @PathVariable  UUID attachmentId) {
-        attachmentService.deleteAttachment(userId, attachmentId);
+    public DeleteAttachmentResponseDTO deleteAttachment(@PathVariable UUID userId, @PathVariable  UUID attachmentId) {
+       return attachmentService.deleteAttachment(userId, attachmentId);
     }
 }
 
